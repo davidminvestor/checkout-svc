@@ -1,11 +1,45 @@
 register:
-  get:
+  post:
     tags:
       - Auth
     operationId: register
     summary: Create new user
     description: |
       Register a new user on the app
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: "schemas.yaml#/addUserBody"
+    responses:
+      "200":
+        description: Auth info
+        content:
+          application/json:
+            schema:
+              $ref: "schemas.yaml#/autInfo"
+      "400":
+        $ref: "/../common/responses.yaml#/BadRequest"
+      "404":
+        $ref: "../common/responses.yaml#/NotFound"
+      "5XX":
+        $ref: "/../common/responses.yaml#/UnexpectedServerError"
+
+login:
+  post:
+    tags:
+      - Auth
+    operationId: login
+    summary: Login the user
+    description: |
+      Login user on the app
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: "schemas.yaml#/loginBody"
     responses:
       "200":
         description: Auth info

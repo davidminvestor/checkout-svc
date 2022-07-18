@@ -30,3 +30,38 @@ auth:
       type: string
       description: Expiration time in minutes
       nullable: false
+
+addUserBody:
+  type: object
+  title: User info
+  properties:
+    name:
+      type: string
+      description: User Name
+      nullable: false
+    email:
+      $ref: "../common/email.yaml#/email"
+      nullable: false
+    password:
+      type: string
+      description: Password
+      nullable: false
+  example:
+    email: "checkout.svc.test@gmail.com"
+    name: "checkout test"
+    password: "checkout.test_22"
+
+loginBody:
+  type: object
+  title: User info
+  properties:
+    email:
+      $ref: "../common/email.yaml#/email"
+      nullable: false
+    password:
+      type: string
+      description: Password
+      nullable: false
+  example:
+    name: "checkout test"
+    password: "checkout.test_22"
