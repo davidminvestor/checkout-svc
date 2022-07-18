@@ -1,0 +1,259 @@
+NoContent: # 204
+  description: The server has successfully fulfilled the request and that there is no additional content to send in the response payload body.
+
+BadRequest: # 400
+  description: Bad input parameter.
+  content:
+    application/json:
+      schema:
+        type: object
+        properties:
+          errors:
+            type: array
+            description: |
+              Array of strings with recursively explain caused error
+              Strings generates from exceptions and errors.
+            items:
+              type: string
+            minItems: 1
+        required:
+          - errors
+
+ValidationErrorByGuidelines: # 422
+  description: |
+    Request cannot be performed due to business logic/model validation constraints
+  content:
+    application/json:
+      schema:
+        type: object
+        properties:
+          error:
+            type: object
+            properties:
+              message:
+                type: string
+                description: |
+                  General description of what happened. It 's basically a global error message
+              code:
+                type: string
+                description: |
+                  String shortcut for the message above. It allows the client to override the message to be more
+                  verbose to a user
+              errors:
+                description: |
+                  This is an error object or list of errors that describes what exactly happened
+                example: # one of examples below
+                  errorsObject:
+                    type: object
+                    properties:
+                      firstField:
+                        type: array
+                        items:
+                          type: string
+                        minItems: 1
+                  errorsArray:
+                    type: array
+                    items:
+                      type: string
+                    minItems: 1
+            required:
+              - message
+              - code
+        required:
+          - error
+
+Unauthorized: # 401
+  description: The client passed in the invalid access token. Client should refresh the token and then try again.
+
+Forbidden: # 403
+  description: Client authorized, but haven't rights to access or execute this method.
+
+NotFound: # 404
+  description: Client authorized, but resource is not found.
+
+MethodNotAllowed: # 405
+  description: Wrong HTTP Method during request
+
+Conflict: # 409
+  description: Current resource state is not applicable to process the request
+
+PreconditionError: # 412
+  description: Request cannot be performed due to business logic preconditions
+
+UnexpectedServerError: #5xx
+  description: Servers are not working as expected. The request is probably valid but needs to be requested again later.
+
+BadRequestByGuidelines: # 400
+  description: |
+    The request could not be fulfilled because it was composed incorrectly
+  content:
+    application/json:
+      schema:
+        $ref: './responses.yaml#/ErrorByGuidelines'
+
+ForbiddenByGuidelines: # 403
+  description: Client authorized, but haven't rights to access or execute this method.
+  content:
+    application/json:
+      schema:
+        allOf:
+          - $ref: './responses.yaml#/ErrorByGuidelines'
+          - example:
+              error:
+                code: FORBIDDEN
+                message: Access denied
+
+UnprocessableEntityByGuidelines: # 422
+  description: |
+    The request cannot be performed due to business logic/model validation constraints
+  content:
+    application/json:
+      schema:
+        $ref: './responses.yaml#/ErrorByGuidelines'
+
+ErrorByGuidelines:
+  type: object
+  properties:
+    error:
+      type: object
+      properties:
+        code:
+          type: string
+          description: Machine readable name
+          example: RESOURCE_VALIDATION_ERROR
+        errors:
+          type: object
+          description: |
+            Object where properties are the fields caused the error and values are error description
+          example:
+            name: property name is required
+        message:
+          type: string
+          description: General description of what happened. It 's basically a global error message
+      required:
+        - code
+  required:
+    - error
+
+BadRequestError: # 400
+  type: object
+  properties:
+    errors:
+      type: object
+      description: |
+        Object where properties are the fields caused the error and values are error description
+      example:
+        name: property name is required
+    code:
+      type: string
+      description: Machine readable name
+      example: BAD_REQUEST_ERROR
+  required:
+    - errors
+    - code
+
+UnprocessableEntityError: # 422
+  type: object
+  properties:
+    errors:
+      oneOf:
+        - type: object
+          description: |
+            Object where properties are the fields caused the error and values are error description
+        - type: array
+          items:
+            type: string
+    code:
+      type: string
+      description: Machine readable name
+      example: RESOURCE_VALIDATION_ERROR
+  required:
+    - errors
+    - code
+
+RedirectByGuideline: # 300
+  description: Redirect to given endpoint
+  content:
+    application/json:
+      schema:
+        type: object
+        properties:
+          data:
+            type: object
+            properties:
+              redirectUrl:
+                type: string
+                description: |
+                   Url that we must do redirect
+          error:
+            type: object
+            properties:
+              message:
+                type: string
+                description: |
+                  General description of what happened. It 's basically a global error message
+              code:
+                type: string
+                description: |
+                  String shortcut for the message above. It allows the client to override the message to be more
+                  verbose to a user
+
+UnauthorizedErrorByGuideline: # 403
+  description: User not allowed to make this action
+  content:
+    application/json:
+      schema:
+        type: object
+        properties:
+          error:
+            type: object
+            properties:
+              message:
+                type: string
+                description: |
+                  General description of what happened. It 's basically a global error message
+              code:
+                type: string
+                description: |
+                  String shortcut for the message above. It allows the client to override the message to be more
+                  verbose to a user
+
+ResourceNotFoundByGuideline: # 404
+  description: Expected resource not found
+  content:
+    application/json:
+      schema:
+        type: object
+        properties:
+          error:
+            type: object
+            properties:
+              message:
+                type: string
+                description: |
+                  General description of what happened. It 's basically a global error message
+              code:
+                type: string
+                description: |
+                  String shortcut for the message above. It allows the client to override the message to be more
+                  verbose to a user
+
+ServerSideErrorByGuideline: # 5XX
+  description: Server side error
+  content:
+    application/json:
+      schema:
+        type: object
+        properties:
+          error:
+            type: object
+            properties:
+              message:
+                type: string
+                description: |
+                  General description of what happened. It 's basically a global error message
+              code:
+                type: string
+                description: |
+                  String shortcut for the message above. It allows the client to override the message to be more
+                  verbose to a user

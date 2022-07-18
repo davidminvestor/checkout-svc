@@ -1,0 +1,20 @@
+Error:
+  type: object
+  description: Unified error response object
+  required:
+    - error
+    - message
+    - code
+  properties:
+    error:
+      type: boolean
+      description: Error flag determining the fact that error is occurred
+      default: true
+    message:
+      type: string
+      description: Error message determining an information about occurred error
+      example: Internal error
+    code:
+      type: string
+      description: Unique string identifier of occurred error
+      example: INTERNAL_ERROR

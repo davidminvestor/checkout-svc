@@ -1,0 +1,13 @@
+includes:
+    - ./vendor/nunomaduro/larastan/extension.neon
+
+parameters:
+    level: 8
+    paths:
+        - app
+    checkGenericClassInNonGenericObjectType: false
+    ignoreErrors:
+        -
+            message: "#^Parameter \\#1 \\$key of method Illuminate\\\\Cache\\\\RateLimiting\\\\Limit\\:\\:by\\(\\) expects string, int\\<min, -1\\>\\|int\\<1, max\\>|\\|string\\|null given\\.$#"
+            count: 1
+            path: app/Providers/RouteServiceProvider.php

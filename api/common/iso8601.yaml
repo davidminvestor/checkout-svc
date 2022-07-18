@@ -1,0 +1,34 @@
+date:
+  type: string
+  format: date
+  description: |
+    Date in ISO8601 format
+  example:
+    '2015-11-05'
+  externalDocs:
+    url: https://en.wikipedia.org/wiki/ISO_8601
+    description: Short description of format on wikipedia.org
+
+dateTime:
+  type: string
+  format: date-time
+  description: |
+    Datetime in ISO8601 format with timezone
+    if timezone isn't present - using timezone from server  
+  example:
+    '2015-11-05T12:00:00-06:00'
+  externalDocs:
+    url: https://en.wikipedia.org/wiki/ISO_8601
+    description: Short description of format on wikipedia.org
+
+dateTimeWithoutTimezone:
+  type: string
+  format: date-time
+  description: |
+    Datetime in ISO8601 format without timezone
+  example:
+    '2015-11-05T12:00:00'
+  externalDocs:
+    url: https://en.wikipedia.org/wiki/ISO_8601
+    description: Short description of format on wikipedia.org
+      

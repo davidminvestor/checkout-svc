@@ -1,0 +1,7 @@
+id:
+  type: integer
+  description: Positive integer identifier from 1 to 4294967295
+  minimum: 1
+  maximum: 4294967295
+  example: 100
+  title: Integer identifier
