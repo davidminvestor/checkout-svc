@@ -1,0 +1,38 @@
+productInfo:
+  type: object
+  description: |
+    Basic product info
+  required:
+    - data
+  properties:
+    data:
+      $ref: "#/product"
+
+product:
+  type: object
+  title: Basic product info
+  properties:
+    externalId:
+      type: string
+      description: |
+        External product ID, such as ASIN on Amazon
+      example: "B099VMT8VZ"
+      nullable: false
+    integration:
+      type: string
+      description: |
+        Integration value for the external api
+      nullable: false
+    name:
+      type: string
+      description: Product name
+      nullable: false
+    stock:
+      type: int
+      description: stock available
+      nullable: false
+    price:
+      type: string
+      description: |
+        Product price represented as string
+      nullable: false

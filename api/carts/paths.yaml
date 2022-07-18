@@ -1,0 +1,115 @@
+products:
+  get:
+    tags:
+      - Cart
+    operationId: getProducts
+    summary: Get the products list
+    description: returns the products list related to a cart
+    responses:
+      "200":
+        description: Products list
+        content:
+          application/json:
+            schema:
+              $ref: "schemas.yaml#/productsList"
+      "400":
+        $ref: "/../common/responses.yaml#/BadRequest"
+      "401":
+        $ref: "/../common/responses.yaml#/Unauthorized"
+      "403":
+        $ref: "/../common/responses.yaml#/Forbidden"
+      "404":
+        $ref: "../common/responses.yaml#/NotFound"
+      "5XX":
+        $ref: "/../common/responses.yaml#/UnexpectedServerError"
+    security:
+      - BearerAuth: []
+  post:
+    tags:
+      - Cart
+    operationId: addProduct
+    summary: Add a product on the cart
+    description: Add a new product on the cart
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: "schemas.yaml#/addProductBody"
+    responses:
+      "200":
+        description: Cart info
+        content:
+          application/json:
+            schema:
+              $ref: "schemas.yaml#/cartInfo"
+      "400":
+        $ref: "/../common/responses.yaml#/BadRequest"
+      "401":
+        $ref: "/../common/responses.yaml#/Unauthorized"
+      "403":
+        $ref: "/../common/responses.yaml#/Forbidden"
+      "404":
+        $ref: "../common/responses.yaml#/NotFound"
+      "5XX":
+        $ref: "/../common/responses.yaml#/UnexpectedServerError"
+    security:
+      - BearerAuth: []
+
+deleteProduct:
+  delete:
+    tags:
+      - Cart
+    operationId: deleteProduct
+    summary: Delete a product
+    description: |
+      Delete a product from the cart
+    parameters:
+      - $ref: "../products/parameters.yaml#/externalId"
+    responses:
+      "200":
+        description: Cart info
+        content:
+          application/json:
+            schema:
+              $ref: "schemas.yaml#/cartInfo"
+      "400":
+        $ref: "/../common/responses.yaml#/BadRequest"
+      "401":
+        $ref: "/../common/responses.yaml#/Unauthorized"
+      "403":
+        $ref: "/../common/responses.yaml#/Forbidden"
+      "404":
+        $ref: "../common/responses.yaml#/NotFound"
+      "5XX":
+        $ref: "/../common/responses.yaml#/UnexpectedServerError"
+    security:
+      - BearerAuth: []
+
+checkout:
+  post:
+    tags:
+      - Cart
+    operationId: checkout
+    summary: Checkout
+    description: |
+      Checkout the cart
+    responses:
+      "200":
+        description: Cart completed info
+        content:
+          application/json:
+            schema:
+              $ref: "schemas.yaml#/cartCheckoutInfo"
+      "400":
+        $ref: "/../common/responses.yaml#/BadRequest"
+      "401":
+        $ref: "/../common/responses.yaml#/Unauthorized"
+      "403":
+        $ref: "/../common/responses.yaml#/Forbidden"
+      "404":
+        $ref: "../common/responses.yaml#/NotFound"
+      "5XX":
+        $ref: "/../common/responses.yaml#/UnexpectedServerError"
+    security:
+      - BearerAuth: []

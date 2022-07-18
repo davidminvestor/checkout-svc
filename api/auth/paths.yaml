@@ -1,0 +1,21 @@
+register:
+  get:
+    tags:
+      - Auth
+    operationId: register
+    summary: Create new user
+    description: |
+      Register a new user on the app
+    responses:
+      "200":
+        description: Auth info
+        content:
+          application/json:
+            schema:
+              $ref: "schemas.yaml#/autInfo"
+      "400":
+        $ref: "/../common/responses.yaml#/BadRequest"
+      "404":
+        $ref: "../common/responses.yaml#/NotFound"
+      "5XX":
+        $ref: "/../common/responses.yaml#/UnexpectedServerError"

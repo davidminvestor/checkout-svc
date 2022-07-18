@@ -1,0 +1,32 @@
+authInfo:
+  type: object
+  description: |
+    Basic auth info
+  required:
+    - data
+  properties:
+    data:
+      $ref: "#/product"
+    example:
+      data:
+        access_token: "4|8JphMKeUlBAhNVEB0KU9puR9MxioMALVg4Hfr62i"
+        token_type: "Bearer"
+        expiration_time: "60 Minutes"
+
+auth:
+  type: object
+  title: Basic auth info
+  properties:
+    externalId:
+      access_token: string
+      description: auth Token
+      example: "4|8JphMKeUlBAhNVEB0KU9puR9MxioMALVg4Hfr62i"
+      nullable: false
+    token_type:
+      type: string
+      description: Type of the token
+      nullable: false
+    expiration_time:
+      type: string
+      description: Expiration time in minutes
+      nullable: false

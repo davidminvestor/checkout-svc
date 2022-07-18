@@ -1,0 +1,153 @@
+productsList:
+  type: object
+  description: |
+    Basic product info
+  required:
+    - data
+  properties:
+    data:
+      type: array
+      items:
+        $ref: "#/product"
+
+product:
+  type: object
+  title: Basic product info
+  properties:
+    id:
+      type: int
+      description: id of the product
+      nullable: false
+    external_id:
+      type: string
+      description: |
+        External product ID, such as ASIN on Amazon
+      example: "B099VMT8VZ"
+      nullable: false
+    integration:
+      type: string
+      description: |
+        Integration value for the external api
+      nullable: false
+    name:
+      type: string
+      description: Product name
+      nullable: false
+    currency_code:
+      type: string
+      description: currency price
+      nullable: false
+    quantity:
+      type: int
+      description: Quantity added on the cart
+      nullable: false
+    price:
+      type: string
+      description: |
+        Product price represented as string
+      nullable: false
+  example:
+    id: 1
+    external_id: "B099VMT8VZ"
+    integration: "amazon"
+    name: "Product example"
+    currency_code: "USD"
+    quantity: 23
+    price: "29.99"
+
+addProductBody:
+  type: object
+  title: Basic product info
+  properties:
+    externalId:
+      type: string
+      description: |
+        External product ID, such as ASIN on Amazon
+      example: "B099VMT8VZ"
+      nullable: false
+    integration:
+      type: string
+      description: |
+        Integration value for the external api
+      nullable: false
+    quantity:
+      type: int
+      description: Quantity to be added
+      nullable: false
+  example:
+    externalId: "B099VMT8VZ"
+    integration: "amazon"
+    quantity: 2
+
+cartInfo:
+  type: object
+  description: |
+    Basic cart info
+  required:
+    - data
+  properties:
+    data:
+      $ref: "#/cart"
+
+cart:
+  type: object
+  title: Basic product info
+  properties:
+    cart_id:
+      type: int
+      description: cart id
+      nullable: false
+    email:
+      $ref: "../common/email.yaml#/email"
+  example:
+    cart_id: 1
+    email: "amazon"
+
+cartCheckoutInfo:
+  type: object
+  description: |
+    Basic product info
+  required:
+    - data
+  properties:
+    data:
+      $ref: "#/cartCheckout"
+
+cartCheckout:
+  type: object
+  title: Basic product info
+  properties:
+    cart_id:
+      type: int
+      description: cart id
+      nullable: false
+    email:
+      $ref: "../common/email.yaml#/email"
+    total:
+      type: string
+      description: |
+        Total price represented as string
+      nullable: false
+    products:
+      type: array
+      items:
+        $ref: "#/product"
+  example:
+    cart_id: 1
+    email: "amazon"
+    total: "1098.23"
+    products:
+      - id: 1
+        external_id: "B099VMT8VZ"
+        integration: "amazon"
+        name: "Product example"
+        currency_code: "USD"
+        quantity: 23
+        price: "29.99"
+      - id: 2
+        external_id: "BQ99VMT8VZ"
+        integration: "amazon"
+        name: "Product example 2"
+        currency_code: "USD"
+        quantity: 1
+        price: "59.99"

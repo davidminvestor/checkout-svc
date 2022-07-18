@@ -1,0 +1,29 @@
+product:
+  get:
+    tags:
+      - Products
+    operationId: getProduct
+    summary: Get the product info
+    description: returns the product info
+    parameters:
+      - $ref: "parameters.yaml#/integration"
+      - $ref: "parameters.yaml#/externalId"
+    responses:
+      "200":
+        description: Product data info
+        content:
+          application/json:
+            schema:
+              $ref: "schemas.yaml#/productInfo"
+      "400":
+        $ref: "/../common/responses.yaml#/BadRequest"
+      "401":
+        $ref: "/../common/responses.yaml#/Unauthorized"
+      "403":
+        $ref: "/../common/responses.yaml#/Forbidden"
+      "404":
+        $ref: "../common/responses.yaml#/NotFound"
+      "5XX":
+        $ref: "/../common/responses.yaml#/UnexpectedServerError"
+    security:
+      - BearerAuth: []

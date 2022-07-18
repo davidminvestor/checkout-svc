@@ -1,0 +1,23 @@
+integration:
+  name: integration
+  in: path
+  example: 1
+  schema:
+    type: string
+    example: "amazon"
+    nullable: false
+    enum: ["amazon"]
+  required: true
+  description: |
+    Integration related to the external products api
+
+externalId:
+  name: externalId
+  in: path
+  example: 1
+  schema:
+    type: string
+    example: "B099VMT8VZ"
+    nullable: false
+  required: true
+  description: External product ID, such as ASIN on Amazon
