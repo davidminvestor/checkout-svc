@@ -74,7 +74,7 @@ class CartsController extends Controller
             $total    = $this->cartManager->getTotal($cart);
             $totalFormatted = (new DecimalMoneyFormatter(new ISOCurrencies()))->format($total);
 
-            //$this->cartManager->checkout($cart, $products);
+            $this->cartManager->checkout($cart, $products);
 
             $checkoutConfirmed = new CheckoutConfirmed($user->name, $totalFormatted, $products->toArray());
             Mail::to($cart->email)->send($checkoutConfirmed);
