@@ -30,15 +30,10 @@
 							]
 						},
 						"url": {
-							"raw": "http://127.0.0.1:8000/api/v1/auth/login",
-							"protocol": "http",
+							"raw": "{{base_url}}/api/v1/auth/login",
 							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
+								"{{base_url}}"
 							],
-							"port": "8000",
 							"path": [
 								"api",
 								"v1",
@@ -75,15 +70,10 @@
 							]
 						},
 						"url": {
-							"raw": "http://127.0.0.1:8000/api/v1/auth/register",
-							"protocol": "http",
+							"raw": "{{base_url}}/api/v1/auth/register",
 							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
+								"{{base_url}}"
 							],
-							"port": "8000",
 							"path": [
 								"api",
 								"v1",
@@ -131,15 +121,10 @@
 							}
 						],
 						"url": {
-							"raw": "http://127.0.0.1:8000/api/v1/products/amazon/B099VMT8VZ",
-							"protocol": "http",
+							"raw": "{{base_url}}/api/v1/products/amazon/B099VMT8VZ",
 							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
+								"{{base_url}}"
 							],
-							"port": "8000",
 							"path": [
 								"api",
 								"v1",
@@ -208,15 +193,10 @@
 							]
 						},
 						"url": {
-							"raw": "http://127.0.0.1:8000/api/v1/cart/products",
-							"protocol": "http",
+							"raw": "{{base_url}}/api/v1/cart/products",
 							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
+								"{{base_url}}"
 							],
-							"port": "8000",
 							"path": [
 								"api",
 								"v1",
@@ -264,15 +244,10 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "http://127.0.0.1:8000/api/v1/cart/products",
-							"protocol": "http",
+							"raw": "{{base_url}}/api/v1/cart/products",
 							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
+								"{{base_url}}"
 							],
-							"port": "8000",
 							"path": [
 								"api",
 								"v1",
@@ -319,15 +294,10 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "http://127.0.0.1:8000/api/v1/cart/checkout",
-							"protocol": "http",
+							"raw": "{{base_url}}/api/v1/cart/checkout",
 							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
+								"{{base_url}}"
 							],
-							"port": "8000",
 							"path": [
 								"api",
 								"v1",
@@ -374,15 +344,10 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "http://127.0.0.1:8000/api/v1/cart/products/B074KDHMKJ",
-							"protocol": "http",
+							"raw": "{{base_url}}/api/v1/cart/products/B074KDHMKJ",
 							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
+								"{{base_url}}"
 							],
-							"port": "8000",
 							"path": [
 								"api",
 								"v1",
@@ -420,7 +385,12 @@
 	"variable": [
 		{
 			"key": "token",
-			"value": "1|CStMUQt4I7GdR4PU8yVfBGsdFyCGXZJs8O9gJdlN",
+			"value": "3|lNGj7AZnwsaGeRBQj86II59vXakpur4KrsTbwFhh",
+			"type": "string"
+		},
+		{
+			"key": "base_url",
+			"value": "https://checkout-svc.herokuapp.com",
 			"type": "string"
 		}
 	]

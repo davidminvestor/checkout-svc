@@ -52,6 +52,7 @@
 
 6. Check open api specs folder in order to see the available routes and the parameters needed.
    Specification could be find under api/ folder.
+
     ```
     POST       api/v1/auth/login
     POST       api/v1/auth/register
@@ -61,6 +62,9 @@
     DELETE     api/v1/cart/products/{externalId}
     GET|HEAD   api/v1/products/{integration}/{externalId}
     ```
+
+    If you want to test the endpoints using postman, you can import checkout-svc.postman_collection.json collection on postman. Also, you can do it on the following url:
+    https://checkout-svc.herokuapp.com/
 
 ## License
 
